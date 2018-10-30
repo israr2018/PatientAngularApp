@@ -1,0 +1,99 @@
+
+<div class="container">
+<div *ngIf="isDataLoaded==true">
+Portal_admin
+<div *ngIf="showPatientReg==true">
+
+<h5 class="text-muted">Patient  Registration </h5>
+<form #form="ngForm">
+
+   
+    
+
+<div class="form-group">
+    <label for="student_name">First Name</label>
+    <input id="student_name" name="student" #student_name="ngModel" [(ngModel)]="entity.FirstName" class="form-control" type="text">
+</div>
+<div class="form-group">
+    <label for="last_name">Last Name</label>
+    <input id="last_name" name="last_name" #father_name="ngModel" [(ngModel)]="entity.LastName" class="form-control" type="text">
+</div>
+<div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" name="email" #email="ngModel" [(ngModel)]="entity.Email" class="form-control" type="text">
+</div>
+
+
+<div class="form-group">
+        <label for="stuent_moible">Mobile</label>
+        <input id="mobile" name="mobile" #gardian_mobile="ngModel" [(ngModel)]="entity.Mobile" class="form-control" type="text">
+    </div>
+
+
+
+<div class="form-group">
+    <label for="post_address">Postal Address</label>
+    <input id="post_address" name="post_address" #address="ngModel" [(ngModel)]="entity.Address" class="form-control" type="text">
+</div>
+<div class="row form-group">
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary|secondary|success|danger|warning|info|light|dark" (click)="addPatient()">
+            Save
+        </button>
+       
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary|secondary|success|danger|warning|info|light|dark" (click)="toggleAddNewPatient()">
+            Cancel
+        </button>
+    </div>
+   
+   
+    
+</div>
+
+</form>
+
+</div>
+
+
+
+
+
+<div *ngIf="!showStudentReg">
+    
+    <div class="form-group">
+      <button class="btn btn-default pull-right" (click)="toggleAddNewPatient()">Add New Patient</button>
+    </div>
+    <h5>Patients Enrol in this Hospital</h5>
+    <table class="table table-stripped">
+      <tr>
+        
+       
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>Address</th>
+        
+
+       
+  
+      </tr>
+      <tr *ngFor="let patient of patientList">
+  
+        <td>{{patient.FirstName}}</td>
+        <td>{{patient.LastName}}</td>
+        <td>{{patient.Mobile}}</td>
+        <td>{{patient.Email}}</td>
+        <td>{{patient.Address}}</td>
+      </tr>
+  
+    </table>
+    {{ patientList | json }}
+  
+  </div>
+
+
+</div>
+</div>
