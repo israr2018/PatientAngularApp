@@ -4,6 +4,7 @@ import { AccountService } from './../../services/account.service';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   
     templateUrl: './register.component.html',
@@ -21,11 +22,16 @@ export class RegisterComponent implements OnInit {
      }
      register():void{
          console.log("register is called");
-         this.router.navigate(['portal_admin']);
-    //    this._accountService.register(this.entity).subscribe(result=>{
-           
-    //         this.router.navigate(['portal_admin']);
-    //     },error=>{});
+       
+
+       this._accountService.register(this.entity).subscribe((result) => {
+          // console.log("Accunt Created successfully."+JSON.stringify(result));
+           localStorage.setItem('token',result);
+           this.router.navigate(['portal_admin']);
+
+       },
+       error=>{console.log("err"+JSON.stringify(error))}
+       
      }
      gotoHome():void{
         this.router.navigate(['home']);
